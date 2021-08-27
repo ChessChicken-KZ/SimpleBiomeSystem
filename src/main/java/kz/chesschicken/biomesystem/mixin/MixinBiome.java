@@ -24,6 +24,6 @@ public class MixinBiome {
     @Inject(method = "createBiomeArray", at = @At("TAIL"))
     private static void injectCleanUp(CallbackInfo ci)
     {
-       // BiomeFinder.cleanUp();
+       BiomeFinder.cleanUp();
     }
 }
