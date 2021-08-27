@@ -16,7 +16,7 @@ public class Sky extends ExtendedBiome {
         this.creatures.add(new EntityEntry(Chicken.class, 10));
         this.setGrassColour(8421631);
         this.setName("Sky");
-        ((AccessorBiome)this).invoker_setRainless();
+        ((AccessorBiome)this).invokerSetRainless();
 
         this.setTemperature(0.7F);
         this.setHumidity(0.8F);

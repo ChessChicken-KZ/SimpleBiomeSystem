@@ -8,7 +8,7 @@ public class Desert extends ExtendedBiome {
         super(i);
         this.setGrassColour(16421912);
         this.setName("Desert");
-        ((AccessorBiome)this).invoker_setRainless();
+        ((AccessorBiome)this).invokerSetRainless();
 
         this.setTemperature(2.0F);
         this.setHumidity(0.0F);

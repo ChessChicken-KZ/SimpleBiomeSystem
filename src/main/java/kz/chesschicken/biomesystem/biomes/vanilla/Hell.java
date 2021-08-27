@@ -16,7 +16,7 @@ public class Hell extends ExtendedBiome {
         this.monsters.add(new EntityEntry(ZombiePigman.class, 10));
         this.setGrassColour(16711680);
         this.setName("Hell");
-        ((AccessorBiome)this).invoker_setRainless();
+        ((AccessorBiome)this).invokerSetRainless();
 
         this.setTemperature(2.0F);
         this.setHumidity(0.0F);

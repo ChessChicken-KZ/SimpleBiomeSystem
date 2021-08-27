@@ -1,4 +1,4 @@
-package kz.chesschicken.biomesystem.utils;
+package kz.chesschicken.biomesystem.utils.adventurenoise;
 
 import net.minecraft.util.maths.MathHelper;
 import net.minecraft.util.noise.PerlinOctaveNoise;

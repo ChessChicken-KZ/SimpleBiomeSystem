@@ -1,6 +1,6 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.utils.NoiseGeneratorOctaves;
+import kz.chesschicken.biomesystem.utils.independentnoise.NoiseGeneratorOctaves;
 import net.minecraft.level.Level;
 import net.minecraft.level.source.OverworldLevelSource;
 import net.minecraft.util.noise.PerlinOctaveNoise;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Random;
 
 @Mixin(OverworldLevelSource.class)
-public class MixinOverworldSource {
+public class MixinOverworldLevelSource {
     @Shadow private Random rand;
 
     @Shadow private PerlinOctaveNoise upperInterpolationNoise;

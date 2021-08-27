@@ -9,7 +9,7 @@ public class IceDesert extends ExtendedBiome {
         this.setGrassColour(16772499);
         this.setName("Ice Desert");
         this.setSnowy();
-        ((AccessorBiome)this).invoker_setRainless();
+        ((AccessorBiome)this).invokerSetRainless();
         this.setFoliageColour(12899129);
 
         this.setTemperature(0.0F);

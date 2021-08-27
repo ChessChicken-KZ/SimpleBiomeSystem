@@ -1,4 +1,4 @@
-package kz.chesschicken.biomesystem.utils;
+package kz.chesschicken.biomesystem.utils.adventurenoise;
 
 import net.minecraft.util.noise.PerlinNoise;
 
@@ -54,6 +54,7 @@ public class NoiseGeneratorPerlin extends PerlinNoise
 
     public void sample(double[] array, double d1, double d2, double d3, int par8, int par9, int par10, double d4, double d5, double d6, double d7)
     {
+
         if (par9 == 1)
         {
             int step = 0;

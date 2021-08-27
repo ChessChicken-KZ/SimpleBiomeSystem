@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "chickenbiomesystem",
+  "id": "biomesystem",
   "version": "${version}",
 
   "name": "Example Mod",
@@ -14,7 +14,7 @@
   },
 
   "license": "MIT",
-  "icon": "assets/chickenbiomesystem/icon.png",
+  "icon": "assets/biomesystem/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -23,7 +23,7 @@
     ]
   },
   "mixins": [
-    "chickenbiomesystem.mixins.json"
+    "biomesystem.mixins.json"
   ],
 
   "depends": {

@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 
 @Mixin(Biome.class)
 public interface AccessorBiome {
+    @SuppressWarnings("UnusedReturnValue")
     @Invoker("setRainless")
-    public Biome invoker_setRainless();
+    public Biome invokerSetRainless();
 }
