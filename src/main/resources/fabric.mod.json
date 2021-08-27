@@ -3,7 +3,7 @@
   "id": "biomesystem",
   "version": "${version}",
 
-  "name": "Example Mod",
+  "name": "Simple Biome System",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "ChessChicken-KZ"
@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "kz.chesschicken.biomesystem.ModInit"
+      "kz.chesschicken.biomesystem.SimpleBiomeSystemMod"
     ]
   },
   "mixins": [

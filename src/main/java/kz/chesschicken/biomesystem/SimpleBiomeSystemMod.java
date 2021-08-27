@@ -5,7 +5,7 @@ import kz.chesschicken.biomesystem.biomes.vanilla.*;
 import kz.chesschicken.biomesystem.utils.BiomeException;
 import net.fabricmc.api.ModInitializer;
 
-public class ModInit implements ModInitializer {
+public class SimpleBiomeSystemMod implements ModInitializer {
     public static ExtendedBiome[] biomeList = new ExtendedBiome[4096];
 
     public static void addBiome(ExtendedBiome extendedBiome) {
@@ -20,6 +20,11 @@ public class ModInit implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        System.out.println("This should be printed!");
+
+
+
+        biomeList[0] = new Rainforest(0);
         addBiome(new Rainforest(0));
         addBiome(new Swampland(1));
         addBiome(new SeasonalForest(2));
@@ -31,7 +36,5 @@ public class ModInit implements ModInitializer {
         addBiome(new Plains(8));
         addBiome(new IceDesert(9));
         addBiome(new Tundra(10));
-        addBiome(new Hell(11));
-        addBiome(new Sky(12));
     }
 }

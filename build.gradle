@@ -1,5 +1,4 @@
 buildscript {
-	ext.kotlin_version = '1.5.30-RC'
 	repositories {
 		maven {
 			name = "Fabric"
@@ -7,7 +6,6 @@ buildscript {
 		}
 		gradlePluginPortal()
 		mavenCentral()
-		jcenter()
 		maven {
 			name = "Jitpack"
 			url 'https://jitpack.io/'
@@ -15,7 +13,6 @@ buildscript {
 	}
 	dependencies {
 		classpath 'com.github.Chocohead:Fabric-Loom:66ed9fe'
-		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 	}
 }
 
@@ -24,7 +21,6 @@ plugins {
 }
 
 apply plugin: "fabric-loom"
-apply plugin: 'kotlin'
 
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -54,7 +50,6 @@ repositories {
 	mavenLocal()
 	gradlePluginPortal()
 	mavenCentral()
-	jcenter()
 	maven {
 		name = "Jitpack"
 		url 'https://jitpack.io/'
@@ -96,7 +91,6 @@ dependencies {
 	compile 'org.jetbrains:annotations:16.0.2'
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
-	implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
 	//modImplementation "net.modificationstation:StationAPI:${project.stapi_version}"
 }
@@ -154,15 +148,5 @@ publishing {
 				builtBy remapJar
 			}
 		}
-	}
-}
-compileKotlin {
-	kotlinOptions {
-		jvmTarget = "1.8"
-	}
-}
-compileTestKotlin {
-	kotlinOptions {
-		jvmTarget = "1.8"
 	}
 }
