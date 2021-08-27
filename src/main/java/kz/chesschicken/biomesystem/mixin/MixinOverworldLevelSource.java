@@ -1,6 +1,6 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.utils.independentnoise.NoiseGeneratorOctaves;
+import kz.chesschicken.biomesystem.utils.independentnoise.IndNoiseGeneratorOctaves;
 import net.minecraft.level.Level;
 import net.minecraft.level.source.OverworldLevelSource;
 import net.minecraft.util.noise.PerlinOctaveNoise;
@@ -35,13 +35,13 @@ public class MixinOverworldLevelSource {
     @Inject(method = "<init>", at = @At("TAIL"), cancellable = true)
     private void setupNewNoise(Level level, long seed, CallbackInfo ci)
     {
-        this.upperInterpolationNoise = new NoiseGeneratorOctaves(this.rand, 16);
-        this.lowerInterpolationNoise = new NoiseGeneratorOctaves(this.rand, 16);
-        this.interpolationNoise = new NoiseGeneratorOctaves(this.rand, 8);
-        this.beachNoise = new NoiseGeneratorOctaves(this.rand, 4);
-        this.surfaceDepthNoise = new NoiseGeneratorOctaves(this.rand, 4);
-        this.biomeNoise = new NoiseGeneratorOctaves(this.rand, 10);
-        this.depthNoise = new NoiseGeneratorOctaves(this.rand, 16);
-        this.treeNoise = new NoiseGeneratorOctaves(this.rand, 8);
+        this.upperInterpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
+        this.lowerInterpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
+        this.interpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 8);
+        this.beachNoise = new IndNoiseGeneratorOctaves(this.rand, 4);
+        this.surfaceDepthNoise = new IndNoiseGeneratorOctaves(this.rand, 4);
+        this.biomeNoise = new IndNoiseGeneratorOctaves(this.rand, 10);
+        this.depthNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
+        this.treeNoise = new IndNoiseGeneratorOctaves(this.rand, 8);
     }
 }

@@ -5,16 +5,16 @@ import net.minecraft.util.noise.SimplexOctaveNoise;
 import java.util.Arrays;
 import java.util.Random;
 
-public class NoiseGeneratorOctaves2 extends SimplexOctaveNoise {
-    private final NoiseGenerator[] collection;
+public class IndNoiseGeneratorSimplex extends SimplexOctaveNoise {
+    private final IndNoiseGenerator[] collection;
     private final int octaves;
 
-    public NoiseGeneratorOctaves2(Random random, int i) {
+    public IndNoiseGeneratorSimplex(Random random, int i) {
         super(random, i);
         this.octaves = i;
-        this.collection = new NoiseGenerator[i];
+        this.collection = new IndNoiseGenerator[i];
         for (int j = 0; j < i; j++)
-            this.collection[j] = new NoiseGenerator(random);
+            this.collection[j] = new IndNoiseGenerator(random);
     }
 
     public double[] sample(double[] ad, double d, double d1, int i, int j, double d2, double d3, double d4) {

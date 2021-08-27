@@ -4,14 +4,14 @@ import net.minecraft.util.noise.Noise;
 
 import java.util.Random;
 
-public class NoiseGeneratorPerlin extends Noise {
+public class IndNoiseGeneratorPerlin extends Noise {
     private final int[] permutations;
     public double xCoord;
     public double yCoord;
     public double zCoord;
 
     @SuppressWarnings("StatementWithEmptyBody")
-    public NoiseGeneratorPerlin(Random random) {
+    public IndNoiseGeneratorPerlin(Random random) {
         this.permutations = new int[512];
         this.xCoord = random.nextDouble() * 256.0D;
         this.yCoord = random.nextDouble() * 256.0D;

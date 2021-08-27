@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface AccessorBiome {
     @SuppressWarnings("UnusedReturnValue")
     @Invoker("setRainless")
-    public Biome invokerSetRainless();
+    Biome invokerSetRainless();
 }

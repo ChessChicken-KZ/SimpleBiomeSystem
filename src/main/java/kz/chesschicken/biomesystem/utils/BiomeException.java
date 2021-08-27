@@ -1,7 +1,7 @@
 package kz.chesschicken.biomesystem.utils;
 
-import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.ModInit;
+import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 
 public class BiomeException extends RuntimeException
 {

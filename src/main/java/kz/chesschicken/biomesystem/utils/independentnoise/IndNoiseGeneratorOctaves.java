@@ -5,16 +5,16 @@ import net.minecraft.util.noise.PerlinOctaveNoise;
 import java.util.Arrays;
 import java.util.Random;
 
-public class NoiseGeneratorOctaves extends PerlinOctaveNoise {
-    private final NoiseGeneratorPerlin[] generatorCollection;
+public class IndNoiseGeneratorOctaves extends PerlinOctaveNoise {
+    private final IndNoiseGeneratorPerlin[] generatorCollection;
     private final int octaves;
 
-    public NoiseGeneratorOctaves(Random random, int i) {
+    public IndNoiseGeneratorOctaves(Random random, int i) {
         super(random, i);
         this.octaves = i;
-        this.generatorCollection = new NoiseGeneratorPerlin[i];
+        this.generatorCollection = new IndNoiseGeneratorPerlin[i];
         for (int j = 0; j < i; j++)
-            this.generatorCollection[j] = new NoiseGeneratorPerlin(random);
+            this.generatorCollection[j] = new IndNoiseGeneratorPerlin(random);
     }
 
     public double sample(double d, double d1) {

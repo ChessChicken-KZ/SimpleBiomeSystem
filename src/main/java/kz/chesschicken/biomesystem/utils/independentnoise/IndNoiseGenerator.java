@@ -2,7 +2,7 @@ package kz.chesschicken.biomesystem.utils.independentnoise;
 
 import java.util.Random;
 
-public class NoiseGenerator {
+public class IndNoiseGenerator {
 
     private static final int[][] field_4296_d = new int[][]{{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0}, {1, 0, 1}, {-1, 0, 1}, {1, 0, -1}, {-1, 0, -1}, {0, 1, 1}, {0, -1, 1}, {0, 1, -1}, {0, -1, -1}};
     private final int[] collection;
@@ -13,7 +13,7 @@ public class NoiseGenerator {
     private static final double field_4293_g = (3.0D - Math.sqrt(3.0D)) / 6.0D;
 
     @SuppressWarnings("StatementWithEmptyBody")
-    public NoiseGenerator(Random random) {
+    public IndNoiseGenerator(Random random) {
         this.collection = new int[512];
         this.field_4292_a = random.nextDouble() * 256.0D;
         this.field_4291_b = random.nextDouble() * 256.0D;
