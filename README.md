@@ -1,13 +1,11 @@
-# Fabric Example Mod with StationAPI and BIN Mappings for beta 1.7.3 server + client
+# SimpleBiomeSystem
+
+SimpleBiomeSystem - noises and new biome system. Mostly works as API.
 
 ## Setup
 
-[See the StationAPI wiki.](https://github.com/ModificationStation/StationAPI)
-
-## Common Issues
-
-[Here.](https://github.com/calmilamsy/BIN-fabric-example-mod#common-issues)
+For setup instructions, please refer to [BIN-fabric-example-mod](https://github.com/calmilamsy/BIN-fabric-example-mod).
 
 ## License
 
-This template is available under the CC0 license. Feel free to learn from it and incorporate it in your own projects.
+The project is under [MIT Licence](https://raw.githubusercontent.com/ChessChicken-KZ/SimpleBiomeSystem/local/LICENSE). Feel free to look at it.

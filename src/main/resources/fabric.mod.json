@@ -4,13 +4,13 @@
   "version": "${version}",
 
   "name": "Simple Biome System",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Noises and new biome system. Mostly works as API.",
   "authors": [
     "ChessChicken-KZ"
   ],
   "contact": {
-    "homepage": "https://chesschicken-kz.github.io/",
-    "sources": "https://github.com/ChessChicken-KZ/ChickenBiomeSystem"
+    "homepage": "https://github.com/ChessChicken-KZ/SimpleBiomeSystem",
+    "sources": "https://github.com/ChessChicken-KZ/SimpleBiomeSystem"
   },
 
   "license": "MIT",
