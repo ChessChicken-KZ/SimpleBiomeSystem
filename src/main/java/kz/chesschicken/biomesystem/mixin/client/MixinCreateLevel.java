@@ -1,7 +1,7 @@
 package kz.chesschicken.biomesystem.mixin.client;
 
-import kz.chesschicken.biomesystem.common.utils.NoiseEnum;
 import kz.chesschicken.biomesystem.common.MapContainer;
+import kz.chesschicken.biomesystem.common.utils.NoiseEnum;
 import net.minecraft.client.gui.screen.ScreenBase;
 import net.minecraft.client.gui.screen.menu.CreateLevel;
 import net.minecraft.client.gui.widgets.Button;
