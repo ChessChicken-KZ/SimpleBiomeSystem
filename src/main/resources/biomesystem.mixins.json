@@ -7,11 +7,15 @@
     "AccessorBiome",
     "MixinBiome",
     "MixinBiomeSource",
-    "MixinOverworldLevelSource"
+    "MixinLevelProperties",
+    "MixinOverworldLevelSource",
+    "MixinDimension"
   ],
   "server": [
+    "server.MixinMinecraftServer"
   ],
   "client": [
+    "client.MixinCreateLevel"
   ],
   "injectors": {
     "defaultRequire": 1

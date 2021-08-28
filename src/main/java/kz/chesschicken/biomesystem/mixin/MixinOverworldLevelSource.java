@@ -1,8 +1,9 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
-import kz.chesschicken.biomesystem.utils.BiomeArrayBuilder;
-import kz.chesschicken.biomesystem.utils.independentnoise.IndNoiseGeneratorOctaves;
+import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
+import kz.chesschicken.biomesystem.common.utils.BiomeArrayBuilder;
+import kz.chesschicken.biomesystem.common.utils.InstanceHelper;
+import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.Level;
 import net.minecraft.level.biome.Biome;
@@ -40,7 +41,6 @@ public abstract class MixinOverworldLevelSource {
     }
 
 
-
     @Shadow private Random rand;
 
     @Shadow private PerlinOctaveNoise upperInterpolationNoise;
@@ -63,38 +63,23 @@ public abstract class MixinOverworldLevelSource {
 
     @Shadow protected abstract double[] calculateNoise(double[] noises, int chunkX, int chunkY, int chunkZ, int noiseResolutionX, int noiseResolutionY, int noiseResolutionZ);
 
-    @Shadow public abstract Chunk getChunk(int chunkX, int chunkZ);
-
-    @Shadow public abstract void shapeChunk(int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures);
-
     @Shadow private Level level;
 
     @Inject(method = "<init>", at = @At("TAIL"), cancellable = true)
     private void setupNewNoise(Level level, long seed, CallbackInfo ci)
     {
-        this.upperInterpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
-        this.lowerInterpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
-        this.interpolationNoise = new IndNoiseGeneratorOctaves(this.rand, 8);
-        this.beachNoise = new IndNoiseGeneratorOctaves(this.rand, 4);
-        this.surfaceDepthNoise = new IndNoiseGeneratorOctaves(this.rand, 4);
-        this.biomeNoise = new IndNoiseGeneratorOctaves(this.rand, 10);
-        this.depthNoise = new IndNoiseGeneratorOctaves(this.rand, 16);
-        this.treeNoise = new IndNoiseGeneratorOctaves(this.rand, 8);
+        this.upperInterpolationNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 16);
+        this.lowerInterpolationNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 16);
+        this.interpolationNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 8);
+        this.beachNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 4);
+        this.surfaceDepthNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 4);
+        this.biomeNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 10);
+        this.depthNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 16);
+        this.treeNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 8);
     }
-
-    /* TODO: Delete when unnecessary.
-    @Inject(method = "shapeChunk", at = @At(
-            value = "JUMP",
-            opcode = Opcodes.IFLE,
-            ordinal = 0 )) // must go to 118th line
-    private void injectDoCalculating(int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures, CallbackInfo ci)
-    {
-
-    }
-    */
 
     @Unique
-    private void injectDoMeta(int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures, Chunk chunk)
+    private void shapeChunk(int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures, Chunk chunk)
     {
         byte var6 = 4;
         byte var7 = 64;
@@ -107,13 +92,13 @@ public abstract class MixinOverworldLevelSource {
             for(int var12 = 0; var12 < var6; ++var12) {
                 for(int var13 = 0; var13 < 16; ++var13) {
                     double var14 = 0.125D;
-                    double var16 = this.noises[((var11 + 0) * var10 + var12 + 0) * var9 + var13 + 0];
-                    double var18 = this.noises[((var11 + 0) * var10 + var12 + 1) * var9 + var13 + 0];
-                    double var20 = this.noises[((var11 + 1) * var10 + var12 + 0) * var9 + var13 + 0];
-                    double var22 = this.noises[((var11 + 1) * var10 + var12 + 1) * var9 + var13 + 0];
-                    double var24 = (this.noises[((var11 + 0) * var10 + var12 + 0) * var9 + var13 + 1] - var16) * var14;
-                    double var26 = (this.noises[((var11 + 0) * var10 + var12 + 1) * var9 + var13 + 1] - var18) * var14;
-                    double var28 = (this.noises[((var11 + 1) * var10 + var12 + 0) * var9 + var13 + 1] - var20) * var14;
+                    double var16 = this.noises[((var11) * var10 + var12) * var9 + var13];
+                    double var18 = this.noises[((var11) * var10 + var12 + 1) * var9 + var13];
+                    double var20 = this.noises[((var11 + 1) * var10 + var12) * var9 + var13];
+                    double var22 = this.noises[((var11 + 1) * var10 + var12 + 1) * var9 + var13];
+                    double var24 = (this.noises[((var11) * var10 + var12) * var9 + var13 + 1] - var16) * var14;
+                    double var26 = (this.noises[((var11) * var10 + var12 + 1) * var9 + var13 + 1] - var18) * var14;
+                    double var28 = (this.noises[((var11 + 1) * var10 + var12) * var9 + var13 + 1] - var20) * var14;
                     double var30 = (this.noises[((var11 + 1) * var10 + var12 + 1) * var9 + var13 + 1] - var22) * var14;
 
                     for(int var32 = 0; var32 < 8; ++var32) {
@@ -124,7 +109,7 @@ public abstract class MixinOverworldLevelSource {
                         double var41 = (var22 - var18) * var33;
 
                         for(int var43 = 0; var43 < 4; ++var43) {
-                            int var44 = var43 + var11 * 4 << 11 | 0 + var12 * 4 << 7 | var13 * 8 + var32;
+                            int var44 = var43 + var11 * 4 << 11 | var12 * 4 << 7 | var13 * 8 + var32;
                             short var45 = 128;
                             double var46 = 0.25D;
                             double var48 = var35;
@@ -177,7 +162,7 @@ public abstract class MixinOverworldLevelSource {
             target = "Lnet/minecraft/level/source/OverworldLevelSource;shapeChunk(II[B[Lnet/minecraft/level/biome/Biome;[D)V"))
     private void injectCallNew(OverworldLevelSource overworldLevelSource, int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures)
     {
-        this.injectDoMeta(chunkX, chunkZ, tiles, biomes, temperatures, new Chunk(this.level, new byte['耀'], chunkX, chunkZ));
+        this.shapeChunk(chunkX, chunkZ, tiles, biomes, temperatures, new Chunk(this.level, new byte['耀'], chunkX, chunkZ));
     }
 
 }

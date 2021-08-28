@@ -1,6 +1,6 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.utils.independentnoise.IndNoiseGeneratorSimplex;
+import kz.chesschicken.biomesystem.common.utils.independentnoise.IndNoiseGeneratorSimplex;
 import net.minecraft.level.Level;
 import net.minecraft.level.gen.BiomeSource;
 import net.minecraft.util.noise.SimplexOctaveNoise;

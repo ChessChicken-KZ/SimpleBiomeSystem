@@ -1,8 +1,8 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.SimpleBiomeSystemMod;
-import kz.chesschicken.biomesystem.event.ExtendedBiomeRegisterEvent;
-import kz.chesschicken.biomesystem.utils.BiomeArrayBuilder;
+import kz.chesschicken.biomesystem.common.SimpleBiomeSystemMod;
+import kz.chesschicken.biomesystem.common.event.ExtendedBiomeRegisterEvent;
+import kz.chesschicken.biomesystem.common.utils.BiomeArrayBuilder;
 import net.minecraft.level.biome.Biome;
 import net.modificationstation.stationapi.api.StationAPI;
 import org.spongepowered.asm.mixin.Mixin;
