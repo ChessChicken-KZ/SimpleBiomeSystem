@@ -3,8 +3,8 @@ package kz.chesschicken.biomesystem.biomes.vanilla;
 import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 
 public class Plains extends ExtendedBiome {
-    public Plains(int i) {
-        super(i);
+    public Plains() {
+        super();
         this.setGrassColour(16767248);
         this.setName("Plains");
 

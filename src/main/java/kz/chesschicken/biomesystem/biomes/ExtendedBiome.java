@@ -5,15 +5,13 @@ import net.minecraft.level.gen.Cave;
 import net.minecraft.level.gen.OverworldCave;
 
 public class ExtendedBiome extends Biome {
-    public final int id;
     public float temperature;
     public float humidity;
     public int stoneBlockID = 1;
     protected Cave caveGen = new OverworldCave();
 
-    public ExtendedBiome(int i) {
+    public ExtendedBiome() {
         super();
-        this.id = i;
     }
 
 

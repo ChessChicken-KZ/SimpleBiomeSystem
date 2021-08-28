@@ -3,8 +3,8 @@ package kz.chesschicken.biomesystem.biomes.vanilla;
 import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 
 public class Tundra extends ExtendedBiome {
-    public Tundra(int i) {
-        super(i);
+    public Tundra() {
+        super();
         this.setGrassColour(5762041);
         this.setName("Tundra");
         this.setSnowy();

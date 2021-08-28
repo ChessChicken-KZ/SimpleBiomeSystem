@@ -10,8 +10,8 @@ import net.minecraft.level.structure.Structure;
 import java.util.Random;
 
 public class Taiga extends ExtendedBiome {
-    public Taiga(int i) {
-        super(i);
+    public Taiga() {
+        super();
         this.creatures.add(new EntityEntry(Wolf.class, 2));
         this.setGrassColour(3060051);
         this.setName("Taiga");

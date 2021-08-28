@@ -11,8 +11,8 @@ import net.minecraft.level.structure.Structure;
 import java.util.Random;
 
 public class Forest extends ExtendedBiome {
-    public Forest(int i) {
-        super(i);
+    public Forest() {
+        super();
         this.creatures.add(new EntityEntry(Wolf.class, 2));
         this.setGrassColour(353825);
         this.setName("Forest");

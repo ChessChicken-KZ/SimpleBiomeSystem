@@ -1,40 +1,34 @@
 package kz.chesschicken.biomesystem;
 
-import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.biomes.vanilla.*;
-import kz.chesschicken.biomesystem.utils.BiomeException;
-import net.fabricmc.api.ModInitializer;
+import kz.chesschicken.biomesystem.event.ExtendedBiomeRegisterEvent;
+import net.mine_diver.unsafeevents.listener.EventListener;
+import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
+import net.modificationstation.stationapi.api.registry.Identifier;
+import net.modificationstation.stationapi.api.registry.ModID;
+import net.modificationstation.stationapi.api.util.Null;
 
-public class SimpleBiomeSystemMod implements ModInitializer {
-    public static ExtendedBiome[] biomeList = new ExtendedBiome[4096];
+public class SimpleBiomeSystemMod {
 
-    public static void addBiome(ExtendedBiome extendedBiome) {
-        if(biomeList[extendedBiome.id] == null) {
-            biomeList[extendedBiome.id] = extendedBiome;
-        } else throw new BiomeException(extendedBiome);
-    }
+    @Entrypoint.ModID
+    public static ModID modID = Null.get();
 
-    public static void overrideBiome(ExtendedBiome extendedBiome) {
-        biomeList[extendedBiome.id] = extendedBiome;
-    }
+    @EventListener
+    public void registerVanillaBiomes(ExtendedBiomeRegisterEvent event)
+    {
+        System.out.println("HELLO WORLD!");
+        event.register(Identifier.of(modID, "rainforest"), new Rainforest());
+        event.register(Identifier.of(modID, "swampland"), new Swampland());
+        event.register(Identifier.of(modID, "seasonal_forest"), new SeasonalForest());
+        event.register(Identifier.of(modID, "forest"), new Forest());
+        event.register(Identifier.of(modID, "savanna"), new Savanna());
 
-    @Override
-    public void onInitialize() {
-        System.out.println("This should be printed!");
+        event.register(Identifier.of(modID, "shrubland"), new Shrubland());
+        event.register(Identifier.of(modID, "taiga"), new Taiga());
+        event.register(Identifier.of(modID, "desert"), new Desert());
+        event.register(Identifier.of(modID, "plains"), new Plains());
+        event.register(Identifier.of(modID, "ice_desert"), new IceDesert());
+        event.register(Identifier.of(modID, "tundra"), new Tundra());
 
-
-
-        biomeList[0] = new Rainforest(0);
-        addBiome(new Rainforest(0));
-        addBiome(new Swampland(1));
-        addBiome(new SeasonalForest(2));
-        addBiome(new Forest(3));
-        addBiome(new Savanna(4));
-        addBiome(new Shrubland(5));
-        addBiome(new Taiga(6));
-        addBiome(new Desert(7));
-        addBiome(new Plains(8));
-        addBiome(new IceDesert(9));
-        addBiome(new Tundra(10));
     }
 }

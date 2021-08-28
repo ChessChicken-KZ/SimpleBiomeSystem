@@ -4,8 +4,8 @@ import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.mixin.AccessorBiome;
 
 public class IceDesert extends ExtendedBiome {
-    public IceDesert(int i) {
-        super(i);
+    public IceDesert() {
+        super();
         this.setGrassColour(16772499);
         this.setName("Ice Desert");
         this.setSnowy();

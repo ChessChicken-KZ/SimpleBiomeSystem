@@ -8,8 +8,8 @@ import net.minecraft.level.structure.Structure;
 import java.util.Random;
 
 public class Rainforest extends ExtendedBiome {
-    public Rainforest(int i) {
-        super(i);
+    public Rainforest() {
+        super();
         this.setGrassColour(588342);
         this.setName("Rainforest");
         this.setFoliageColour(2094168);
