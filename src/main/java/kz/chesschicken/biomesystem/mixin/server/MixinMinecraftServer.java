@@ -16,15 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Environment(EnvType.SERVER)
 @Mixin(MinecraftServer.class)
 public class MixinMinecraftServer {
-    @Shadow public ServerLevel[] levels;
 
-    @Inject(method = "prepareLevel", at = @At(
-            value = "INVOKE",
-            target = "Lnet/minecraft/server/ServerPlayerConnectionManager;method_564([Lnet/minecraft/server/level/ServerLevel;)V",
-            shift = At.Shift.BEFORE
-    ))
+    @Inject(method = "prepareLevel", at = @At("HEAD"))
     private void injectInvokeConfig(LevelStorage arg, String levelName, long seed, CallbackInfo ci)
     {
-        MapContainer.INSTANCE.parseServerConfig(this.levels[0]);
+        MapContainer.INSTANCE.parseServerConfig();
     }
 }

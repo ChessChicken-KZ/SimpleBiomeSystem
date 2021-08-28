@@ -20,7 +20,7 @@ public class MapContainer {
 
     @Environment(EnvType.SERVER)
     @SneakyThrows
-    public void parseServerConfig(Level level)
+    public void parseServerConfig()
     {
         File configFile = new File(FabricLoader.getInstance().getGameDir().toFile(), "worldInfo.config");
         if(!configFile.exists()) {
@@ -43,11 +43,10 @@ public class MapContainer {
         });
 
 
-        if(((ILevelNoise)level.getProperties()).getNoiseEnum() == null) {
+        if(CURRENT_ENUM == null) {
             SystemMod.LOGGER.error("Something went wrong while reading config. Set to default parameters.");
             CURRENT_ENUM = NoiseEnum.INDEPENDENT;
         }
-
     }
 
 
