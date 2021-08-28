@@ -1,5 +1,6 @@
 package kz.chesschicken.biomesystem.utils;
 
+import kz.chesschicken.biomesystem.SimpleBiomeSystemMod;
 import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.utils.math.FloatFinder;
 import net.modificationstation.stationapi.api.registry.Identifier;
@@ -7,8 +8,7 @@ import net.modificationstation.stationapi.api.registry.Identifier;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class BiomeFinder {
-    public Map<Identifier, ExtendedBiome> REGISTRY_LIST = new TreeMap<>();
+public class BiomeArrayBuilder {
 
     private Map<Float, ExtendedBiome> temporaryList;
     private Float[] temperatureList;
@@ -19,8 +19,8 @@ public class BiomeFinder {
         {
             temporaryList = new TreeMap<>();
 
-            for(Identifier id : REGISTRY_LIST.keySet()) {
-                temporaryList.put(REGISTRY_LIST.get(id).temperature, REGISTRY_LIST.get(id));
+            for(Identifier id : SimpleBiomeSystemMod.REGISTRY_LIST.keySet()) {
+                temporaryList.put(SimpleBiomeSystemMod.REGISTRY_LIST.get(id).temperature, SimpleBiomeSystemMod.REGISTRY_LIST.get(id));
             }
 
 
@@ -36,5 +36,5 @@ public class BiomeFinder {
         temperatureList = null;
     }
 
-    public static BiomeFinder INSTANCE = new BiomeFinder();
+    public static BiomeArrayBuilder INSTANCE = new BiomeArrayBuilder();
 }
