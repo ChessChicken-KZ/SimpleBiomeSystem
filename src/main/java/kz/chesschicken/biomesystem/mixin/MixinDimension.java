@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinDimension {
 
     @Inject(method = "initDimension", at = @At("HEAD"))
-    private void getNormalP(Level level, CallbackInfo ci)
+    private void injectSetNoiseEnum(Level level, CallbackInfo ci)
     {
         if(MapContainer.INSTANCE.CURRENT_ENUM != null) {
             ((ILevelNoise) level.getProperties()).setNoiseEnum(MapContainer.INSTANCE.CURRENT_ENUM);

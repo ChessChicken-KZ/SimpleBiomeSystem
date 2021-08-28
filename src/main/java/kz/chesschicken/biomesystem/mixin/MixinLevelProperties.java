@@ -16,13 +16,13 @@ public class MixinLevelProperties implements ILevelNoise {
     private NoiseEnum noiseEnum;
 
     @Inject(method = "updateProperties", at = @At("TAIL"))
-    private void injectAddNoiseConfig(CompoundTag worldTag, CompoundTag playerTag, CallbackInfo ci)
+    private void injectSetNoise(CompoundTag worldTag, CompoundTag playerTag, CallbackInfo ci)
     {
         worldTag.put("noisetype", noiseEnum.name().toUpperCase());
     }
 
     @Inject(method = "<init>(Lnet/minecraft/util/io/CompoundTag;)V", at = @At("TAIL"))
-    private void injectGetNoiseConfig(CompoundTag worldTag, CallbackInfo ci)
+    private void injectGetNoise(CompoundTag worldTag, CallbackInfo ci)
     {
         if(worldTag.getString("noisetype").length() > 0)
             this.noiseEnum = NoiseEnum.getByName(worldTag.getString("noisetype"));
@@ -30,7 +30,7 @@ public class MixinLevelProperties implements ILevelNoise {
     }
 
     @Inject(method = "<init>(Lnet/minecraft/level/LevelProperties;)V", at = @At("TAIL"))
-    private void injectGetNoiseConfigC(LevelProperties levelProperties, CallbackInfo ci)
+    private void injectGetNoise1(LevelProperties levelProperties, CallbackInfo ci)
     {
         if(((ILevelNoise)levelProperties).getNoiseEnum() != null)
             this.noiseEnum = ((ILevelNoise)levelProperties).getNoiseEnum();

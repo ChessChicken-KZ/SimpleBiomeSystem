@@ -66,7 +66,7 @@ public abstract class MixinOverworldLevelSource {
     @Shadow private Level level;
 
     @Inject(method = "<init>", at = @At("TAIL"), cancellable = true)
-    private void setupNewNoise(Level level, long seed, CallbackInfo ci)
+    private void injectReplaceOctaves(Level level, long seed, CallbackInfo ci)
     {
         this.upperInterpolationNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 16);
         this.lowerInterpolationNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().perlinOctaves, this.rand, 16);

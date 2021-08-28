@@ -23,7 +23,7 @@ public class MixinBiomeSource {
     @Shadow private SimplexOctaveNoise detailNoise;
 
     @Inject(method = "<init>(Lnet/minecraft/level/Level;)V", at = @At("TAIL"))
-    private void callNewSimplex(Level level, CallbackInfo ci)
+    private void injectReplaceSimplexNoises(Level level, CallbackInfo ci)
     {
         this.temperatureNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().simplex, new Random(level.getSeed() * 9871L), 4);
         this.rainfallNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().simplex, new Random(level.getSeed() * 39811L), 4);

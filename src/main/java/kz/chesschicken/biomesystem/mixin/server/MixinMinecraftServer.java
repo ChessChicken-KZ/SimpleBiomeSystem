@@ -23,7 +23,7 @@ public class MixinMinecraftServer {
             target = "Lnet/minecraft/server/ServerPlayerConnectionManager;method_564([Lnet/minecraft/server/level/ServerLevel;)V",
             shift = At.Shift.BEFORE
     ))
-    private void prepareConfig(LevelStorage arg, String levelName, long seed, CallbackInfo ci)
+    private void injectInvokeConfig(LevelStorage arg, String levelName, long seed, CallbackInfo ci)
     {
         MapContainer.INSTANCE.parseServerConfig(this.levels[0]);
     }
