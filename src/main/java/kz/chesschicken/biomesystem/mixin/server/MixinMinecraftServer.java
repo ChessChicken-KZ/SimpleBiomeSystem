@@ -1,6 +1,6 @@
 package kz.chesschicken.biomesystem.mixin.server;
 
-import kz.chesschicken.biomesystem.server.MapContainer;
+import kz.chesschicken.biomesystem.common.MapContainer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.level.storage.LevelStorage;

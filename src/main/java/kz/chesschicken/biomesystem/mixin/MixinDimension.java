@@ -1,7 +1,7 @@
 package kz.chesschicken.biomesystem.mixin;
 
 import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
-import kz.chesschicken.biomesystem.server.MapContainer;
+import kz.chesschicken.biomesystem.common.MapContainer;
 import net.minecraft.level.Level;
 import net.minecraft.level.dimension.Dimension;
 import org.spongepowered.asm.mixin.Mixin;

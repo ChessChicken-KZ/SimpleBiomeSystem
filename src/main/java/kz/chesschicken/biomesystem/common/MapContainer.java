@@ -1,6 +1,5 @@
-package kz.chesschicken.biomesystem.server;
+package kz.chesschicken.biomesystem.common;
 
-import kz.chesschicken.biomesystem.common.SimpleBiomeSystemMod;
 import kz.chesschicken.biomesystem.common.utils.NoiseEnum;
 import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import lombok.SneakyThrows;
