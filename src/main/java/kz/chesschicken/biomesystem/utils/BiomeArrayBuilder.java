@@ -31,8 +31,8 @@ public class BiomeArrayBuilder {
 
     public void cleanUp()
     {
-        temporaryList.clear();
-        temperatureList = null;
+        //temporaryList.clear();
+        //temperatureList = null;
     }
 
     public static BiomeArrayBuilder INSTANCE = new BiomeArrayBuilder();
