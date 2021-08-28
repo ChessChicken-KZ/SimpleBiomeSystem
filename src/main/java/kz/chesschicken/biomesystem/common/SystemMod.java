@@ -9,7 +9,7 @@ import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.core.Logger;
 
-public class SimpleBiomeSystemMod {
+public class SystemMod {
 
     @Entrypoint.Logger
     public static Logger LOGGER = Null.get();

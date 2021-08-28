@@ -7,7 +7,6 @@ import net.minecraft.util.noise.PerlinOctaveNoise;
 import net.minecraft.util.noise.SimplexOctaveNoise;
 
 
-//TODO: Use this somewhere.
 public enum NoiseEnum {
 
     VANILLA("VANILLA", PerlinOctaveNoise.class, SimplexOctaveNoise.class),

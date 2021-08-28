@@ -44,7 +44,7 @@ public class MapContainer {
 
 
         if(((ILevelNoise)level.getProperties()).getNoiseEnum() == null) {
-            SimpleBiomeSystemMod.LOGGER.error("Something went wrong while reading config. Set to default parameters.");
+            SystemMod.LOGGER.error("Something went wrong while reading config. Set to default parameters.");
             CURRENT_ENUM = NoiseEnum.INDEPENDENT;
         }
 

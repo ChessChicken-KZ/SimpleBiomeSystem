@@ -1,6 +1,6 @@
 package kz.chesschicken.biomesystem.mixin;
 
-import kz.chesschicken.biomesystem.common.SimpleBiomeSystemMod;
+import kz.chesschicken.biomesystem.common.SystemMod;
 import kz.chesschicken.biomesystem.common.event.ExtendedBiomeRegisterEvent;
 import kz.chesschicken.biomesystem.common.utils.BiomeArrayBuilder;
 import net.minecraft.level.biome.Biome;
@@ -31,8 +31,8 @@ public class MixinBiome {
     @Inject(method = "createBiomeArray", at = @At("HEAD"))
     private static void injectPostEvent(CallbackInfo ci)
     {
-        SimpleBiomeSystemMod.LOGGER.info("Accepting biomes for list.");
+        SystemMod.LOGGER.info("Accepting biomes for list.");
         StationAPI.EVENT_BUS.post(new ExtendedBiomeRegisterEvent());
-        SimpleBiomeSystemMod.LOGGER.info("Total biomes count: " + ExtendedBiomeRegisterEvent.REGISTRY_LIST.size());
+        SystemMod.LOGGER.info("Total biomes count: " + ExtendedBiomeRegisterEvent.REGISTRY_LIST.size());
     }
 }

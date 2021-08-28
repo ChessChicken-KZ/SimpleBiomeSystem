@@ -1,6 +1,8 @@
 package kz.chesschicken.biomesystem.mixin;
 
+import kz.chesschicken.biomesystem.common.utils.InstanceHelper;
 import kz.chesschicken.biomesystem.common.utils.independentnoise.IndNoiseGeneratorSimplex;
+import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import net.minecraft.level.Level;
 import net.minecraft.level.gen.BiomeSource;
 import net.minecraft.util.noise.SimplexOctaveNoise;
@@ -24,8 +26,8 @@ public class MixinBiomeSource {
     @Inject(method = "<init>(Lnet/minecraft/level/Level;)V", at = @At("TAIL"))
     private void callNewSimplex(Level level, CallbackInfo ci)
     {
-        this.temperatureNoise = new IndNoiseGeneratorSimplex(new Random(level.getSeed() * 9871L), 4);
-        this.rainfallNoise = new IndNoiseGeneratorSimplex(new Random(level.getSeed() * 39811L), 4);
-        this.detailNoise = new IndNoiseGeneratorSimplex(new Random(level.getSeed() * 543321L), 2);
+        this.temperatureNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().simplex, new Random(level.getSeed() * 9871L), 4);
+        this.rainfallNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().simplex, new Random(level.getSeed() * 39811L), 4);
+        this.detailNoise = InstanceHelper.generateNoiseInstance(((ILevelNoise)level.getProperties()).getNoiseEnum().simplex, new Random(level.getSeed() * 543321L), 2);
     }
 }

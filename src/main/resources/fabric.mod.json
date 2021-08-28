@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "stationapi:event_bus": [
-      "kz.chesschicken.biomesystem.common.SimpleBiomeSystemMod"
+      "kz.chesschicken.biomesystem.common.SystemMod"
     ]
   },
   "mixins": [
