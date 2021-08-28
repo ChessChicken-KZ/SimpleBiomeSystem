@@ -35,6 +35,6 @@ public class MixinBiome {
     {
         SimpleBiomeSystemMod.LOGGER.info("Accepting biomes for list.");
         StationAPI.EVENT_BUS.post(new ExtendedBiomeRegisterEvent());
-        SimpleBiomeSystemMod.LOGGER.info("Total biomes count: " + SimpleBiomeSystemMod.REGISTRY_LIST.size());
+        SimpleBiomeSystemMod.LOGGER.info("Total biomes count: " + ExtendedBiomeRegisterEvent.REGISTRY_LIST.size());
     }
 }

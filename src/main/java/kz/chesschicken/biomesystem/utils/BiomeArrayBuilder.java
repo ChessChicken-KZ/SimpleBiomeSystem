@@ -1,7 +1,7 @@
 package kz.chesschicken.biomesystem.utils;
 
-import kz.chesschicken.biomesystem.SimpleBiomeSystemMod;
 import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
+import kz.chesschicken.biomesystem.event.ExtendedBiomeRegisterEvent;
 import kz.chesschicken.biomesystem.utils.math.FloatFinder;
 import net.modificationstation.stationapi.api.registry.Identifier;
 
@@ -19,8 +19,8 @@ public class BiomeArrayBuilder {
         {
             temporaryList = new TreeMap<>();
 
-            for(Identifier id : SimpleBiomeSystemMod.REGISTRY_LIST.keySet()) {
-                temporaryList.put(SimpleBiomeSystemMod.REGISTRY_LIST.get(id).temperature, SimpleBiomeSystemMod.REGISTRY_LIST.get(id));
+            for(Identifier id : ExtendedBiomeRegisterEvent.REGISTRY_LIST.keySet()) {
+                temporaryList.put(ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id).temperature, ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id));
             }
 
 

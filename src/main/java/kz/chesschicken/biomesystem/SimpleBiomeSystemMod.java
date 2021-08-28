@@ -1,6 +1,5 @@
 package kz.chesschicken.biomesystem;
 
-import kz.chesschicken.biomesystem.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.biomes.vanilla.*;
 import kz.chesschicken.biomesystem.event.ExtendedBiomeRegisterEvent;
 import net.mine_diver.unsafeevents.listener.EventListener;
@@ -10,11 +9,7 @@ import net.modificationstation.stationapi.api.registry.ModID;
 import net.modificationstation.stationapi.api.util.Null;
 import org.apache.logging.log4j.core.Logger;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class SimpleBiomeSystemMod {
-    public static Map<Identifier, ExtendedBiome> REGISTRY_LIST = new TreeMap<>();
 
     @Entrypoint.Logger
     public static Logger LOGGER = Null.get();
@@ -22,6 +17,7 @@ public class SimpleBiomeSystemMod {
     @Entrypoint.ModID
     public static ModID MODID = Null.get();
 
+    @SuppressWarnings("unused")
     @EventListener
     public void registerVanillaBiomes(ExtendedBiomeRegisterEvent event)
     {
@@ -36,6 +32,5 @@ public class SimpleBiomeSystemMod {
         event.register(Identifier.of(MODID, "plains"), new Plains());
         event.register(Identifier.of(MODID, "ice_desert"), new IceDesert());
         event.register(Identifier.of(MODID, "tundra"), new Tundra());
-
     }
 }
