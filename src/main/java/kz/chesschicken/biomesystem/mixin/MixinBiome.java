@@ -18,9 +18,7 @@ public class MixinBiome {
     @Inject(method = "getClimateBiome", at = @At("HEAD"), cancellable = true)
     private static void injectNewClimateBiomes(float temperature, float rainfall, CallbackInfoReturnable<Biome> cir)
     {
-        rainfall *= temperature;
-
-        cir.setReturnValue(BiomeArrayBuilder.INSTANCE.getBiome(temperature, rainfall));
+        cir.setReturnValue(BiomeArrayBuilder.INSTANCE.getBiome(temperature));
         cir.cancel();
     }
 

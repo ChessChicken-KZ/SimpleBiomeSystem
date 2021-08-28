@@ -13,7 +13,7 @@ public class BiomeArrayBuilder {
     private Map<Float, ExtendedBiome> temporaryList;
     private Float[] temperatureList;
 
-    public ExtendedBiome getBiome(float temp, float humid)
+    public ExtendedBiome getBiome(float temp)
     {
         if(temporaryList == null)
         {
@@ -22,7 +22,6 @@ public class BiomeArrayBuilder {
             for(Identifier id : ExtendedBiomeRegisterEvent.REGISTRY_LIST.keySet()) {
                 temporaryList.put(ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id).temperature, ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id));
             }
-
 
             temperatureList = temporaryList.keySet().toArray(new Float[0]);
         }

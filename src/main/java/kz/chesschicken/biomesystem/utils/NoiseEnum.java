@@ -7,6 +7,7 @@ import net.minecraft.util.noise.PerlinOctaveNoise;
 import net.minecraft.util.noise.SimplexOctaveNoise;
 
 
+//TODO: Use this somewhere.
 public enum NoiseEnum {
 
     VANILLA(PerlinOctaveNoise.class, SimplexOctaveNoise.class),
@@ -21,7 +22,4 @@ public enum NoiseEnum {
         this.simplex = simplex;
     }
 
-    //TODO: Remove hardcoded values.
-    @SuppressWarnings("unused")
-    public static NoiseEnum CURRENT_ENUM = INDEPENDENT;
 }
