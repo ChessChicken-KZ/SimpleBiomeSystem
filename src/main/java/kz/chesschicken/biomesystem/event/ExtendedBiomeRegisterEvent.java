@@ -9,7 +9,7 @@ public class ExtendedBiomeRegisterEvent extends Event {
 
     public void register(Identifier identifier, ExtendedBiome extendedBiome)
     {
-        BiomeFinder.list.put(identifier, extendedBiome);
+        BiomeFinder.INSTANCE.REGISTRY_LIST.put(identifier, extendedBiome);
     }
 
     @Override

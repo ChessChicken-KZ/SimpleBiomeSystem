@@ -8,31 +8,33 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class BiomeFinder {
-    public static Map<Identifier, ExtendedBiome> list = new TreeMap<>();
+    public Map<Identifier, ExtendedBiome> REGISTRY_LIST = new TreeMap<>();
 
-    private static Map<Float, ExtendedBiome> shit;
-    private static Float[] temperatureList;
+    private Map<Float, ExtendedBiome> temporaryList;
+    private Float[] temperatureList;
 
-    public static ExtendedBiome getBiome(float temp, float humid)
+    public ExtendedBiome getBiome(float temp, float humid)
     {
-        if(shit == null)
+        if(temporaryList == null)
         {
-            shit = new TreeMap<>();
+            temporaryList = new TreeMap<>();
 
-            for(Identifier id : list.keySet()) {
-                shit.put(list.get(id).temperature, list.get(id));
+            for(Identifier id : REGISTRY_LIST.keySet()) {
+                temporaryList.put(REGISTRY_LIST.get(id).temperature, REGISTRY_LIST.get(id));
             }
 
 
-            temperatureList = shit.keySet().toArray(new Float[0]);
+            temperatureList = temporaryList.keySet().toArray(new Float[0]);
         }
 
-        return shit.get(FloatFinder.fastNearestFloat(temperatureList, temp));
+        return temporaryList.get(FloatFinder.fastNearestFloat(temperatureList, temp));
     }
 
-    public static void cleanUp()
+    public void cleanUp()
     {
-        shit.clear();
+        temporaryList.clear();
         temperatureList = null;
     }
+
+    public static BiomeFinder INSTANCE = new BiomeFinder();
 }

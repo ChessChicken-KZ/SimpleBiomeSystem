@@ -19,14 +19,14 @@ public class MixinBiome {
     {
         rainfall *= temperature;
 
-        cir.setReturnValue(BiomeFinder.getBiome(temperature, rainfall));
+        cir.setReturnValue(BiomeFinder.INSTANCE.getBiome(temperature, rainfall));
         cir.cancel();
     }
 
     @Inject(method = "createBiomeArray", at = @At("TAIL"))
     private static void injectCleanUp(CallbackInfo ci)
     {
-       BiomeFinder.cleanUp();
+       BiomeFinder.INSTANCE.cleanUp();
     }
 
     @Inject(method = "createBiomeArray", at = @At("HEAD"))
