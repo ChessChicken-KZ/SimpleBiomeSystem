@@ -27,7 +27,7 @@ public class MixinLevelProperties implements ILevelNoise {
         if(worldTag.getString("noisetype").length() > 0)
             this.noiseEnum = NoiseEnum.getByName(worldTag.getString("noisetype"));
         else
-            this.noiseEnum = NoiseEnum.VANILLA;
+            this.noiseEnum = NoiseEnum.INDEPENDENT;
     }
 
     @Inject(method = "<init>(Lnet/minecraft/level/LevelProperties;)V", at = @At("TAIL"))
@@ -36,7 +36,7 @@ public class MixinLevelProperties implements ILevelNoise {
         if(((ILevelNoise)levelProperties).getNoiseEnum() != null)
             this.noiseEnum = ((ILevelNoise)levelProperties).getNoiseEnum();
         else
-            this.noiseEnum = NoiseEnum.VANILLA;
+            this.noiseEnum = NoiseEnum.INDEPENDENT;
     }
 
     @Override
