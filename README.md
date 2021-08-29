@@ -2,9 +2,28 @@
 
 SimpleBiomeSystem - noises and new biome system. Mostly works as API.
 
+## Using this API
+Firstly, add jitpack.io repository.
+```groovy
+repositories {
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+```
+
+Then `modImplementation` this API as shown below:
+```groovy
+dependencies {
+    implementation 'com.github.ChessChicken-KZ:SimpleBiomeSystem:9d2a71062b'
+}
+```
+
+For other builds, [visit this webiste](https://jitpack.io/#ChessChicken-KZ/SimpleBiomeSystem).
+
 ## Setup
 
-For setup instructions, please refer to [BIN-fabric-example-mod](https://github.com/calmilamsy/BIN-fabric-example-mod).
+For mod/gradle setup instructions, please refer to [BIN-fabric-example-mod](https://github.com/calmilamsy/BIN-fabric-example-mod).
 
 ## License
 
