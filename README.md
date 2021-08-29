@@ -19,7 +19,7 @@ dependencies {
 }
 ```
 
-For other builds, [visit this webiste](https://jitpack.io/#ChessChicken-KZ/SimpleBiomeSystem).
+For other builds, [visit this website](https://jitpack.io/#ChessChicken-KZ/SimpleBiomeSystem).
 
 ## Setup
 
