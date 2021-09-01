@@ -16,9 +16,9 @@
   ],
   "client": [
     "client.MixinCreateLevel",
-    "client.MixinGrass",
-    "client.MixinLeaves",
-    "client.MixinTallGrass",
+    "client.render.MixinGrass",
+    "client.render.MixinLeaves",
+    "client.render.MixinTallGrass",
     "client.MixinInGame"
   ],
   "injectors": {

@@ -1,12 +1,10 @@
 package kz.chesschicken.biomesystem.common;
 
 import kz.chesschicken.biomesystem.common.utils.NoiseEnum;
-import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import lombok.SneakyThrows;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.level.Level;
 
 import java.io.File;
 import java.io.PrintWriter;
@@ -15,8 +13,6 @@ import java.util.stream.Stream;
 
 public class MapContainer {
     public NoiseEnum CURRENT_ENUM;
-
-    private MapContainer() { }
 
     @Environment(EnvType.SERVER)
     @SneakyThrows
@@ -49,6 +45,6 @@ public class MapContainer {
         }
     }
 
-
+    private MapContainer() { }
     public static MapContainer INSTANCE = new MapContainer();
 }
