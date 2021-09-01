@@ -13,6 +13,11 @@ public class BiomeArrayBuilder {
     private Map<Float, ExtendedBiome> temporaryList;
     private Float[] temperatureList;
 
+    /**
+     * A special method, returning Biome from an float value.
+     * @param temp Temperature (float value).
+     * @return Biome.
+     */
     public ExtendedBiome getBiome(float temp)
     {
         if(temporaryList == null)
@@ -27,12 +32,6 @@ public class BiomeArrayBuilder {
         }
 
         return temporaryList.get(FloatFinder.fastNearestFloat(temperatureList, temp));
-    }
-
-    public void cleanUp()
-    {
-        //temporaryList.clear();
-        //temperatureList = null;
     }
 
     public static BiomeArrayBuilder INSTANCE = new BiomeArrayBuilder();

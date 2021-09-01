@@ -1,6 +1,13 @@
 package kz.chesschicken.biomesystem.common.utils.math;
 
 public class FloatFinder {
+
+    /**
+     * A small and fast method to find nearest existing float value from an array.
+     * @param array Array of floats.
+     * @param x Float that need to be found.
+     * @return Near value float from the array.
+     */
     public static float fastNearestFloat(Float[] array, float x)
     {
         float value = array[0];

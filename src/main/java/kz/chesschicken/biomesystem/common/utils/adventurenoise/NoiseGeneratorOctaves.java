@@ -6,6 +6,10 @@ import net.minecraft.util.noise.PerlinOctaveNoise;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Adventure Update noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class NoiseGeneratorOctaves extends PerlinOctaveNoise
 {
     private final NoiseGeneratorPerlin[] collection;

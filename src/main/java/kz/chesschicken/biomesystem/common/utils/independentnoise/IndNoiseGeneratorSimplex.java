@@ -5,6 +5,10 @@ import net.minecraft.util.noise.SimplexOctaveNoise;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Independent noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class IndNoiseGeneratorSimplex extends SimplexOctaveNoise {
     private final IndNoiseGenerator[] collection;
     private final int octaves;

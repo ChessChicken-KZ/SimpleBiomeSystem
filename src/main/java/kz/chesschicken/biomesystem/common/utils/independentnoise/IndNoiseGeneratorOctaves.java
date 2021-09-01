@@ -5,6 +5,10 @@ import net.minecraft.util.noise.PerlinOctaveNoise;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Independent noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class IndNoiseGeneratorOctaves extends PerlinOctaveNoise {
     private final IndNoiseGeneratorPerlin[] generatorCollection;
     private final int octaves;

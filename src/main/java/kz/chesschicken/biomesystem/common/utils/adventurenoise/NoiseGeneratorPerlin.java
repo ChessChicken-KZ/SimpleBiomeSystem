@@ -4,6 +4,10 @@ import net.minecraft.util.noise.PerlinNoise;
 
 import java.util.Random;
 
+/**
+ * Adventure Update noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class NoiseGeneratorPerlin extends PerlinNoise
 {
     private final int[] permutations;

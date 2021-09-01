@@ -4,6 +4,10 @@ import net.minecraft.util.noise.Noise;
 
 import java.util.Random;
 
+/**
+ * Independent noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class IndNoiseGeneratorPerlin extends Noise {
     private final int[] permutations;
     public double xCoord;

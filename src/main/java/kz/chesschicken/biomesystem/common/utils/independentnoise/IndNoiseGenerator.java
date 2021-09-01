@@ -2,6 +2,10 @@ package kz.chesschicken.biomesystem.common.utils.independentnoise;
 
 import java.util.Random;
 
+/**
+ * Independent noise.
+ * @see kz.chesschicken.biomesystem.common.utils.NoiseEnum
+ */
 public class IndNoiseGenerator {
 
     private static final int[][] field_4296_d = new int[][]{{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0}, {1, 0, 1}, {-1, 0, 1}, {1, 0, -1}, {-1, 0, -1}, {0, 1, 1}, {0, -1, 1}, {0, 1, -1}, {0, -1, -1}};

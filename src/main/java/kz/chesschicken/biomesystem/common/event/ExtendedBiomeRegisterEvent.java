@@ -9,6 +9,9 @@ import net.modificationstation.stationapi.api.registry.ModID;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ * An event for registering custom biomes. Use this to add your biomes.
+ */
 public class ExtendedBiomeRegisterEvent extends Event {
     public static Map<Identifier, ExtendedBiome> REGISTRY_LIST = new TreeMap<>();
 
