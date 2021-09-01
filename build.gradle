@@ -95,7 +95,7 @@ dependencies {
 	implementation "com.github.mineLdiver:expressions:2fa66db"
 	implementation "com.github.mineLdiver:UnsafeEvents:7efec57"
 
-	modImplementation 'com.github.ModificationStation:StationAPI:777f95fe9d'
+	modImplementation 'com.github.ModificationStation:StationAPI:d6f9496e93'
 
 	modImplementation "com.github.minecraft-cursed-legacy:cursed-fabric-loader:${project.loader_version}"
 }

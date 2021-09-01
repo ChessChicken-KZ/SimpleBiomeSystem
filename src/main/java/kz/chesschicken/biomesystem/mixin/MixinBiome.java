@@ -22,6 +22,13 @@ public class MixinBiome {
         cir.cancel();
     }
 
+    @Inject(method = "getBiome", at = @At("HEAD"), cancellable = true)
+    private static void injectNewClimateBiomes1(double temperature, double d1, CallbackInfoReturnable<Biome> cir)
+    {
+        cir.setReturnValue(BiomeArrayBuilder.INSTANCE.getBiome((float) temperature));
+        cir.cancel();
+    }
+
     @Inject(method = "createBiomeArray", at = @At("TAIL"))
     private static void injectCleanUp(CallbackInfo ci)
     {
