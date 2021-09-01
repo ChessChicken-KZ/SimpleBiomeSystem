@@ -162,7 +162,7 @@ public abstract class MixinOverworldLevelSource {
             target = "Lnet/minecraft/level/source/OverworldLevelSource;shapeChunk(II[B[Lnet/minecraft/level/biome/Biome;[D)V"))
     private void injectCallNew(OverworldLevelSource overworldLevelSource, int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures)
     {
-        this.shapeChunk(chunkX, chunkZ, tiles, biomes, temperatures, new Chunk(this.level, new byte['耀'], chunkX, chunkZ));
+        this.shapeChunk(chunkX, chunkZ, tiles, biomes, temperatures, new Chunk(this.level, new byte['\u8000'], chunkX, chunkZ));
     }
 
 }

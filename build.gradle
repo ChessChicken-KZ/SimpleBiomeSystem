@@ -152,6 +152,11 @@ publishing {
 				classifier 'dev'
 				builtBy remapJar
 			}
+
+			artifact ("${project.buildDir.absolutePath}/libs/${archivesBaseName}-${project.version}-javadoc.jar") {
+				classifier 'javadoc'
+				builtBy javadocJarGR
+			}
 		}
 	}
 }
