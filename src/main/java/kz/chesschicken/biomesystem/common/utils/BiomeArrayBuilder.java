@@ -35,4 +35,7 @@ public class BiomeArrayBuilder {
     }
 
     public static BiomeArrayBuilder INSTANCE = new BiomeArrayBuilder();
+
+    public void cleanUp() {
+    }
 }
