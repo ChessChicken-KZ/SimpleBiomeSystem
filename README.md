@@ -15,7 +15,7 @@ repositories {
 Then `modImplementation` this API as shown below:
 ```groovy
 dependencies {
-    implementation 'com.github.ChessChicken-KZ:SimpleBiomeSystem:5dc5d0f360'
+    implementation 'com.github.ChessChicken-KZ:SimpleBiomeSystem:c01d139039'
 }
 ```
 
