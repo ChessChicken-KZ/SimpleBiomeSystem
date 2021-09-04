@@ -23,6 +23,7 @@ public class ExtendedBiomeRegisterEvent extends Event {
     public void register(Identifier identifier, ExtendedBiome extendedBiome)
     {
         REGISTRY_LIST.put(identifier, extendedBiome);
+        extendedBiome.getTemperatureRange().biomeList.put(extendedBiome.getTemperature(), extendedBiome);
     }
 
     /**

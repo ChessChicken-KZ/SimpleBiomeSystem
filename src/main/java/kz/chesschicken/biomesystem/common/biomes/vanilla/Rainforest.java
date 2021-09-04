@@ -10,10 +10,11 @@ import java.util.Random;
 
 public class Rainforest extends ExtendedBiome {
     public Rainforest() {
-        super(BiomeTemperature.WARM, +20D);
+        super(BiomeTemperature.WARM, 20D);
         this.setGrassColour(588342);
         this.setName("Rainforest");
         this.setFoliageColour(2094168);
+        this.setTreeDensity(5);
 
     }
 

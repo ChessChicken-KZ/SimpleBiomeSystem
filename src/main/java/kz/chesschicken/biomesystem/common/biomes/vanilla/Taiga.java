@@ -12,12 +12,13 @@ import java.util.Random;
 
 public class Taiga extends ExtendedBiome {
     public Taiga() {
-        super(BiomeTemperature.COLD, -30D);
+        super(BiomeTemperature.COLD, 30D);
         this.creatures.add(new EntityEntry(Wolf.class, 2));
         this.setGrassColour(3060051);
         this.setName("Taiga");
         this.setSnowy();
         this.setFoliageColour(8107825);
+        this.setTreeDensity(5);
     }
 
     public Structure getTree(Random rand) {

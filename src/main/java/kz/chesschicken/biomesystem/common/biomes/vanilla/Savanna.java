@@ -8,5 +8,6 @@ public class Savanna extends ExtendedBiome {
         super(BiomeTemperature.WARM, 40D);
         this.setGrassColour(14278691);
         this.setName("Savanna");
+        this.setTreeDensity(3);
     }
 }

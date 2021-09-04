@@ -5,8 +5,9 @@ import kz.chesschicken.biomesystem.common.utils.BiomeTemperature;
 
 public class Shrubland extends ExtendedBiome {
     public Shrubland() {
-        super(BiomeTemperature.WARM, +30D);
+        super(BiomeTemperature.WARM, 30D);
         this.setGrassColour(10595616);
         this.setName("Shrubland");
+        this.setTreeDensity(1);
     }
 }

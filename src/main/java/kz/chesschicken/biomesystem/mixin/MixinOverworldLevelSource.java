@@ -8,7 +8,9 @@ import net.minecraft.block.BlockBase;
 import net.minecraft.level.Level;
 import net.minecraft.level.biome.Biome;
 import net.minecraft.level.chunk.Chunk;
+import net.minecraft.level.source.LevelSource;
 import net.minecraft.level.source.OverworldLevelSource;
+import net.minecraft.level.structure.Structure;
 import net.minecraft.util.noise.PerlinOctaveNoise;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -126,7 +128,7 @@ public abstract class MixinOverworldLevelSource {
                                     }
                                 }
 
-                                ExtendedBiome biome = BiomeTemperature.getBiome((float)var53);
+                                ExtendedBiome biome = BiomeTemperature.getExtendedBiome((float)var53);
 
                                 if (var48 > 0.0D) {
                                     var55 = biome.undergroundID;
@@ -164,6 +166,34 @@ public abstract class MixinOverworldLevelSource {
     private void injectCallNew(OverworldLevelSource overworldLevelSource, int chunkX, int chunkZ, byte[] tiles, Biome[] biomes, double[] temperatures)
     {
         this.shapeChunk(chunkX, chunkZ, tiles, biomes, temperatures, new Chunk(this.level, new byte['\u8000'], chunkX, chunkZ));
+    }
+
+    @Inject(method = "decorate", at = @At(
+            value = "INVOKE",
+            target = "Lnet/minecraft/util/noise/PerlinOctaveNoise;sample(DD)D",
+            shift = At.Shift.BY,
+            by = -2
+    ))
+    private void injectTreeGenData(LevelSource levelSource, int chunkX, int chunkZ, CallbackInfo ci)
+    {
+        int x = chunkX * 16;
+        int z = chunkZ * 16;
+        ExtendedBiome biome = (ExtendedBiome) this.level.getBiomeSource().getBiome(x + 16, z + 16);
+        int t = (int)((this.treeNoise.sample((double)x * 0.5D, (double)z * 0.5D) / 8.0D + this.rand.nextDouble() * 4.0D + 4.0D) / 3.0D);
+
+        if(biome.getTreeDensity() < 0)
+            t = -biome.getTreeDensity();
+        else
+            t = t + biome.getTreeDensity();
+
+        for(int i = 0; i < t; i++) {
+            int lx = x + this.rand.nextInt(16) + 8;
+            int lz = z + this.rand.nextInt(16) + 8;
+            Structure var18 = biome.getTree(this.rand);
+            var18.method_1143(1.0D, 1.0D, 1.0D);
+            var18.generate(this.level, this.rand, lx, this.level.getHeight(lx, lz), lz);
+        }
+
     }
 
 }

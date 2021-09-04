@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "AccessorBiome",
-    "MixinBiome",
     "MixinBiomeSource",
     "MixinDimension",
     "MixinLevelProperties",
@@ -16,10 +15,10 @@
   ],
   "client": [
     "client.MixinCreateLevel",
+    "client.MixinInGame",
     "client.render.MixinGrass",
     "client.render.MixinLeaves",
-    "client.render.MixinTallGrass",
-    "client.MixinInGame"
+    "client.render.MixinTallGrass"
   ],
   "injectors": {
     "defaultRequire": 1

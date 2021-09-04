@@ -1,5 +1,6 @@
 package kz.chesschicken.biomesystem.mixin;
 
+import kz.chesschicken.biomesystem.common.utils.BiomeTemperature;
 import kz.chesschicken.biomesystem.common.utils.InstanceHelper;
 import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import net.minecraft.level.Level;
@@ -48,14 +49,14 @@ public class MixinBiomeSource {
 
         this.temperatureNoises = this.temperatureNoise.sample(this.temperatureNoises, x, z, xSize, xSize, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
         this.rainfallNoises = this.rainfallNoise.sample(this.rainfallNoises, x, z, xSize, xSize, 0.05000000074505806D, 0.05000000074505806D, 0.3333333333333333D);
-        this.detailNoises = this.detailNoise.sample(this.detailNoises, x, z, xSize, xSize, 0.25D, 0.25D, 0.5882352941176471D);
+        //this.detailNoises = this.detailNoise.sample(this.detailNoises, x, z, xSize, xSize, 0.25D, 0.25D, 0.5882352941176471D);
         int q = 0;
 
         for(int ix = 0; ix < xSize; ++ix) {
             for(int iz = 0; iz < zSize; ++iz) {
-                double detail = this.detailNoises[q] * 1.1D + 0.5D;
-                double temp = (this.temperatureNoises[q] * 0.15D + 0.7D) * (1.0D - 0.01D) + detail * 0.01D;
-                double rainf = (this.rainfallNoises[q] * 0.15D + 0.5D) * (1.0D - 0.002D) + detail * 0.002D;
+                //double detail = this.detailNoises[q] * 1.1D + 0.5D;
+                double temp = (this.temperatureNoises[q] /* * 0.15D */ + 0.7D) * (1.0D - 0.01D) /*+ detail * 0.01D*/;
+                double rainf = (this.rainfallNoises[q] /* * 0.15D */ + 0.5D) * (1.0D - 0.002D) /*+ detail * 0.002D*/;
                 temp = 1.0D - (1.0D - temp) * (1.0D - temp);
 
                 if(x + ((int) temp) > 0 && temp < 0.5D)
@@ -72,7 +73,7 @@ public class MixinBiomeSource {
 
                 this.temperatureNoises[q] = temp;
                 this.rainfallNoises[q] = rainf;
-                biomes[q++] = Biome.getBiome(temp, rainf);
+                biomes[q++] = BiomeTemperature.getExtendedBiome(temp);
             }
         }
 
@@ -88,13 +89,13 @@ public class MixinBiomeSource {
 
 
         temperatures = this.temperatureNoise.sample(temperatures, x, z, xSize, zSize, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
-        this.detailNoises = this.detailNoise.sample(this.detailNoises, x, z, xSize, zSize, 0.25D, 0.25D, 0.5882352941176471D);
+        //this.detailNoises = this.detailNoise.sample(this.detailNoises, x, z, xSize, zSize, 0.25D, 0.25D, 0.5882352941176471D);
         int q = 0;
 
         for(int ix = 0; ix < xSize; ++ix) {
             for(int iz = 0; iz < zSize; ++iz) {
-                double detail = this.detailNoises[q] * 1.1D + 0.5D;
-                double temp = (temperatures[q] * 0.15D + 0.7D) * (1.0D - 0.01D) + detail * 0.01D;
+                //double detail = this.detailNoises[q] * 1.1D + 0.5D;
+                double temp = (temperatures[q] /* * 0.15D */ + 0.7D) * (1.0D - 0.01D) /* + detail * 0.01D*/;
                 temp = 1.0D - (1.0D - temp) * (1.0D - temp);
 
                 if(x + ((int) temp) > 0 && temp < 0.5D)

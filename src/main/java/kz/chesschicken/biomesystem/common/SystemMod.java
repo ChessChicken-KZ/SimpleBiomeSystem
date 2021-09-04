@@ -4,6 +4,8 @@ import kz.chesschicken.biomesystem.common.biomes.vanilla.*;
 import kz.chesschicken.biomesystem.common.event.ExtendedBiomeRegisterEvent;
 import net.mine_diver.unsafeevents.listener.EventListener;
 import net.mine_diver.unsafeevents.listener.ListenerPriority;
+import net.modificationstation.stationapi.api.StationAPI;
+import net.modificationstation.stationapi.api.event.mod.PostInitEvent;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.util.Null;
@@ -13,6 +15,15 @@ public class SystemMod {
 
     @Entrypoint.Logger
     public static Logger LOGGER = Null.get();
+
+    @SuppressWarnings("unused")
+    @EventListener
+    public void callEvent(PostInitEvent event)
+    {
+        SystemMod.LOGGER.info("Accepting biomes for list.");
+        StationAPI.EVENT_BUS.post(new ExtendedBiomeRegisterEvent());
+        SystemMod.LOGGER.info("Total biomes count: " + ExtendedBiomeRegisterEvent.REGISTRY_LIST.size());
+    }
 
 
     @SuppressWarnings("unused")

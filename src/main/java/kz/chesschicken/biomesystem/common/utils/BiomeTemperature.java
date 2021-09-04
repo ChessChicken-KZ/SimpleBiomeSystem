@@ -3,8 +3,8 @@ package kz.chesschicken.biomesystem.common.utils;
 import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
 import kz.chesschicken.biomesystem.common.utils.math.ArraySearch;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public enum BiomeTemperature {
     EXTREME_COLD(Double.NEGATIVE_INFINITY, -40D),
@@ -14,12 +14,11 @@ public enum BiomeTemperature {
 
     public final double min;
     public final double max;
-    public final Map<Double, ExtendedBiome> biomeList;
+    public final Map<Double, ExtendedBiome> biomeList = new TreeMap<>();
 
     BiomeTemperature(double min, double max) {
         this.min = min;
         this.max = max;
-        this.biomeList = new HashMap<>();
     }
 
     public static BiomeTemperature getByTemp(double f) {
@@ -38,7 +37,7 @@ public enum BiomeTemperature {
      * @param temp Temperature (double value).
      * @return Biome.
      */
-    public static ExtendedBiome getBiome(double temp)
+    public static ExtendedBiome getExtendedBiome(double temp)
     {
         return getByTemp(temp).biomeList.get(ArraySearch.fastNearestDouble(getByTemp(temp).biomeList.keySet().toArray(new Double[0]), temp));
     }

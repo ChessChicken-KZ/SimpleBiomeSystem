@@ -16,12 +16,22 @@ public class ExtendedBiome extends Biome {
     public byte topTileMeta = 0;
     public byte underTileMeta = 0;
 
+    protected int treeDensity = 0;
+
     protected Cave caveGen = new OverworldCave();
 
     public ExtendedBiome(BiomeTemperature type, double temperature) {
         super();
         this.biomeType = type;
-        this.biomeType.biomeList.put(temperature, this);
+        this.temperature = temperature;
+    }
+
+    public void setTreeDensity(int i) {
+        this.treeDensity = i;
+    }
+
+    public int getTreeDensity() {
+        return this.treeDensity;
     }
 
     /**
