@@ -22,4 +22,19 @@ public class ArraySearch {
 
         return value;
     }
+
+    public static double findNearestDoubleSlow(Double[] array, double d)
+    {
+        double distance = Math.abs(array[0] - d);
+        int index = 0;
+
+        for(int i = 1; i < array.length; i++){
+            double q = Math.abs(array[i] - d);
+            if(q < distance){
+                index = i;
+                distance = q;
+            }
+        }
+        return array[index];
+    }
 }

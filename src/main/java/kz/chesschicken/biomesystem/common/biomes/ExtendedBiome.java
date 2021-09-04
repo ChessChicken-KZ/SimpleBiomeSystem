@@ -1,45 +1,14 @@
 package kz.chesschicken.biomesystem.common.biomes;
 
+import kz.chesschicken.biomesystem.common.utils.BiomeTemperature;
 import net.minecraft.block.BlockBase;
 import net.minecraft.level.biome.Biome;
 import net.minecraft.level.gen.Cave;
 import net.minecraft.level.gen.OverworldCave;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class ExtendedBiome extends Biome {
-    public static enum BiomeType
-    {
-        EXTREME_COLD(Double.NEGATIVE_INFINITY, -40D),
-        COLD(-40D, 0D),
-        WARM(0D, 40D),
-        EXTREME_WARM(40D, Double.POSITIVE_INFINITY);
 
-        public final double min;
-        public final double max;
-        public final Map<Double, ExtendedBiome> biomeList;
-        BiomeType(double min, double max)
-        {
-            this.min = min;
-            this.max = max;
-            this.biomeList = new TreeMap<>();
-        }
-
-        public static BiomeType getByTemp(double f)
-        {
-            if(f <= EXTREME_COLD.max)
-                return EXTREME_COLD;
-            if(f <= COLD.max)
-                return COLD;
-            if(f <= WARM.max)
-                return WARM;
-
-            return EXTREME_WARM;
-        }
-    }
-
-    protected final BiomeType biomeType;
+    protected final BiomeTemperature biomeType;
     public double temperature;
     public int undergroundID = BlockBase.STONE.id;
 
@@ -49,13 +18,17 @@ public class ExtendedBiome extends Biome {
 
     protected Cave caveGen = new OverworldCave();
 
-    public ExtendedBiome(BiomeType type, double temperature) {
+    public ExtendedBiome(BiomeTemperature type, double temperature) {
         super();
         this.biomeType = type;
         this.biomeType.biomeList.put(temperature, this);
     }
 
-    public BiomeType getTemperatureRange() {
+    /**
+     * Get the {@link BiomeTemperature} enum of the biome.
+     * @return Temperature enum from {@link BiomeTemperature}.
+     */
+    public BiomeTemperature getTemperatureRange() {
         return this.biomeType;
     }
 

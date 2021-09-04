@@ -3,6 +3,7 @@ package kz.chesschicken.biomesystem.common;
 import kz.chesschicken.biomesystem.common.biomes.vanilla.*;
 import kz.chesschicken.biomesystem.common.event.ExtendedBiomeRegisterEvent;
 import net.mine_diver.unsafeevents.listener.EventListener;
+import net.mine_diver.unsafeevents.listener.ListenerPriority;
 import net.modificationstation.stationapi.api.mod.entrypoint.Entrypoint;
 import net.modificationstation.stationapi.api.registry.Identifier;
 import net.modificationstation.stationapi.api.util.Null;
@@ -15,7 +16,7 @@ public class SystemMod {
 
 
     @SuppressWarnings("unused")
-    @EventListener
+    @EventListener(priority = ListenerPriority.HIGHEST)
     public void registerVanillaBiomes(ExtendedBiomeRegisterEvent event)
     {
         event.register(Identifier.of("minecraft:rainforest"), new Rainforest());

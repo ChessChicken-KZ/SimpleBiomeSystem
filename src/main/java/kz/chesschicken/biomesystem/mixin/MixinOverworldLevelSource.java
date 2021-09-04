@@ -1,7 +1,7 @@
 package kz.chesschicken.biomesystem.mixin;
 
 import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
-import kz.chesschicken.biomesystem.common.utils.BiomeArrayBuilder;
+import kz.chesschicken.biomesystem.common.utils.BiomeTemperature;
 import kz.chesschicken.biomesystem.common.utils.InstanceHelper;
 import kz.chesschicken.biomesystem.common.utils.worldnoise.ILevelNoise;
 import net.minecraft.block.BlockBase;
@@ -126,7 +126,7 @@ public abstract class MixinOverworldLevelSource {
                                     }
                                 }
 
-                                ExtendedBiome biome = BiomeArrayBuilder.INSTANCE.getBiome((float)var53);
+                                ExtendedBiome biome = BiomeTemperature.getBiome((float)var53);
 
                                 if (var48 > 0.0D) {
                                     var55 = biome.undergroundID;

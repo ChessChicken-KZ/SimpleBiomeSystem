@@ -1,6 +1,7 @@
 package kz.chesschicken.biomesystem.common.biomes.vanilla;
 
 import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
+import kz.chesschicken.biomesystem.common.utils.BiomeTemperature;
 import net.minecraft.entity.EntityEntry;
 import net.minecraft.entity.animal.Wolf;
 import net.minecraft.level.structure.PineTree;
@@ -11,7 +12,7 @@ import java.util.Random;
 
 public class Taiga extends ExtendedBiome {
     public Taiga() {
-        super(BiomeType.COLD, -30D);
+        super(BiomeTemperature.COLD, -30D);
         this.creatures.add(new EntityEntry(Wolf.class, 2));
         this.setGrassColour(3060051);
         this.setName("Taiga");
