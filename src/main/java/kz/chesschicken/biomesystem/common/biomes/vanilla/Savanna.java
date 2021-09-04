@@ -4,11 +4,8 @@ import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
 
 public class Savanna extends ExtendedBiome {
     public Savanna() {
-        super();
+        super(BiomeType.WARM, 40D);
         this.setGrassColour(14278691);
         this.setName("Savanna");
-
-        this.setTemperature(2.0F);
-        this.setHumidity(0.1F);
     }
 }

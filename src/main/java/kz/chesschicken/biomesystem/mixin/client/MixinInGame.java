@@ -17,7 +17,10 @@ public class MixinInGame {
     @Inject(method = "renderHud", at = @At("TAIL"))
     private void showBiome(float f, boolean flag, int i, int j, CallbackInfo ci)
     {
-        if (this.minecraft.options.debugHud && FabricLoader.getInstance().isDevelopmentEnvironment())
-            this.minecraft.textRenderer.drawTextWithShadow("Biome: " + (this.minecraft.level.getBiomeSource().getBiome((int)this.minecraft.player.x, (int)this.minecraft.player.z).biomeName), 5, 105, 0xFFFFFF);
+        if (this.minecraft.options.debugHud && FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            this.minecraft.textRenderer.drawTextWithShadow("Biome: " + (this.minecraft.level.getBiomeSource().getBiome((int) this.minecraft.player.x, (int) this.minecraft.player.z).biomeName), 5, 105, 0xFFFFFF);
+            this.minecraft.textRenderer.drawTextWithShadow("Temperature: " + (this.minecraft.level.getBiomeSource().getTemperature((int) this.minecraft.player.x, (int) this.minecraft.player.z)), 5, 115, 0xFFFFFF);
+
+        }
     }
 }

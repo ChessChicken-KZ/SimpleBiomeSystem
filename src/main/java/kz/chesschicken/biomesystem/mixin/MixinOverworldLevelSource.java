@@ -136,7 +136,8 @@ public abstract class MixinOverworldLevelSource {
 
                                 if(areAffected(tiles[var44]))
                                 {
-                                    fastApplyMeta(chunk, var44, (byte) biome.stoneBlockMeta);
+                                    fastApplyMeta(chunk, var44, var55 == (byte) biome.undergroundID ? biome.stoneBlockMeta :
+                                            var55 == biome.topTileId ? biome.topTileMeta : biome.underTileMeta);
                                 }
 
                                 var44 += var45;

@@ -5,12 +5,9 @@ import kz.chesschicken.biomesystem.mixin.AccessorBiome;
 
 public class Desert extends ExtendedBiome {
     public Desert() {
-        super();
+        super(BiomeType.EXTREME_WARM, +50D);
         this.setGrassColour(16421912);
         this.setName("Desert");
         ((AccessorBiome)this).invokerSetRainless();
-
-        this.setTemperature(2.0F);
-        this.setHumidity(0.0F);
     }
 }

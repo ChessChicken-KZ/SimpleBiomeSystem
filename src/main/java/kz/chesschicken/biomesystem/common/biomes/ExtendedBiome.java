@@ -5,70 +5,66 @@ import net.minecraft.level.biome.Biome;
 import net.minecraft.level.gen.Cave;
 import net.minecraft.level.gen.OverworldCave;
 
-public class ExtendedBiome extends Biome {
-    public float temperature;
-    public float humidity;
-    public int undergroundID = BlockBase.STONE.id;
-    public int stoneBlockMeta = 0;
-    protected Cave caveGen = new OverworldCave();
+import java.util.Map;
+import java.util.TreeMap;
 
-    public ExtendedBiome() {
-        super();
+public class ExtendedBiome extends Biome {
+    public static enum BiomeType
+    {
+        EXTREME_COLD(Double.NEGATIVE_INFINITY, -40D),
+        COLD(-40D, 0D),
+        WARM(0D, 40D),
+        EXTREME_WARM(40D, Double.POSITIVE_INFINITY);
+
+        public final double min;
+        public final double max;
+        public final Map<Double, ExtendedBiome> biomeList;
+        BiomeType(double min, double max)
+        {
+            this.min = min;
+            this.max = max;
+            this.biomeList = new TreeMap<>();
+        }
+
+        public static BiomeType getByTemp(double f)
+        {
+            if(f <= EXTREME_COLD.max)
+                return EXTREME_COLD;
+            if(f <= COLD.max)
+                return COLD;
+            if(f <= WARM.max)
+                return WARM;
+
+            return EXTREME_WARM;
+        }
     }
 
-    /**
-     * Set the temperature of the biome.
-     * @param f Temperature (float value).
-     * @return Biome instance.
-     */
-    public ExtendedBiome setTemperature(float f) {
-        this.temperature = f;
-        return this;
+    protected final BiomeType biomeType;
+    public double temperature;
+    public int undergroundID = BlockBase.STONE.id;
+
+    public byte stoneBlockMeta = 0;
+    public byte topTileMeta = 0;
+    public byte underTileMeta = 0;
+
+    protected Cave caveGen = new OverworldCave();
+
+    public ExtendedBiome(BiomeType type, double temperature) {
+        super();
+        this.biomeType = type;
+        this.biomeType.biomeList.put(temperature, this);
+    }
+
+    public BiomeType getTemperatureRange() {
+        return this.biomeType;
     }
 
     /**
      * Get the temperature of the biome.
      * @return Biome temperature value.
      */
-    public float getTemperature() {
+    public double getTemperature() {
         return this.temperature;
-    }
-
-    /**
-     * Set the humidity of the biome.
-     * @param f Humidity (float value).
-     * @return Biome instance.
-     */
-    public ExtendedBiome setHumidity(float f) {
-        this.humidity = f;
-        return this;
-    }
-
-    /**
-     * Get the humidity of the biome.
-     * @return Biome humidity value.
-     */
-    public float getHumidity() {
-        return this.humidity;
-    }
-
-    /**
-     * Set the underground block meta of the biome.
-     * Default value: 0.
-     * @param i Metadata
-     * @return Biome instance.
-     */
-    public ExtendedBiome setUndergroundBlockMeta(int i) {
-        this.stoneBlockMeta = i;
-        return this;
-    }
-
-    /**
-     * Get the underground block meta of the biome.
-     * @return Underground block meta value.
-     */
-    public int getUndergroundBlockMeta() {
-        return this.stoneBlockMeta;
     }
 
     /**

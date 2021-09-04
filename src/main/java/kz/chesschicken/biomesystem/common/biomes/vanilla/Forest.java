@@ -12,14 +12,11 @@ import java.util.Random;
 
 public class Forest extends ExtendedBiome {
     public Forest() {
-        super();
+        super(BiomeType.COLD, -10D);
         this.creatures.add(new EntityEntry(Wolf.class, 2));
         this.setGrassColour(353825);
         this.setName("Forest");
         this.setFoliageColour(5159473);
-
-        this.setTemperature(0.7F);
-        this.setHumidity(0.8F);
     }
 
     public Structure getTree(Random rand) {

@@ -1,37 +1,19 @@
 package kz.chesschicken.biomesystem.common.utils;
 
 import kz.chesschicken.biomesystem.common.biomes.ExtendedBiome;
-import kz.chesschicken.biomesystem.common.event.ExtendedBiomeRegisterEvent;
-import kz.chesschicken.biomesystem.common.utils.math.FloatFinder;
-import net.modificationstation.stationapi.api.registry.Identifier;
-
-import java.util.Map;
-import java.util.TreeMap;
+import kz.chesschicken.biomesystem.common.utils.math.ArraySearch;
 
 public class BiomeArrayBuilder {
 
-    private Map<Float, ExtendedBiome> temporaryList;
-    private Float[] temperatureList;
 
     /**
      * A special method, returning Biome from an float value.
-     * @param temp Temperature (float value).
+     * @param temp Temperature (double value).
      * @return Biome.
      */
-    public ExtendedBiome getBiome(float temp)
+    public ExtendedBiome getBiome(double temp)
     {
-        if(temporaryList == null)
-        {
-            temporaryList = new TreeMap<>();
-
-            for(Identifier id : ExtendedBiomeRegisterEvent.REGISTRY_LIST.keySet()) {
-                temporaryList.put(ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id).temperature, ExtendedBiomeRegisterEvent.REGISTRY_LIST.get(id));
-            }
-
-            temperatureList = temporaryList.keySet().toArray(new Float[0]);
-        }
-
-        return temporaryList.get(FloatFinder.fastNearestFloat(temperatureList, temp));
+        return ExtendedBiome.BiomeType.getByTemp(temp).biomeList.get(ArraySearch.fastNearestDouble(ExtendedBiome.BiomeType.getByTemp(temp).biomeList.keySet().toArray(new Double[0]), temp));
     }
 
     public static BiomeArrayBuilder INSTANCE = new BiomeArrayBuilder();

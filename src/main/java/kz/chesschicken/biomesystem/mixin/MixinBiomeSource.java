@@ -63,10 +63,12 @@ public class MixinBiomeSource {
                     temp += 0.4D;
                 }
 
-                if(x - ((int) temp) <= 0 && temp > 0.8D)
+                if(x - ((int) temp) <= 0 && temp > 0.7D)
                 {
-                    temp -= 0.6D;
+                    temp -= 0.3D;
                 }
+
+                temp = Math.floor(temp * 1000) / 100;
 
                 this.temperatureNoises[q] = temp;
                 this.rainfallNoises[q] = rainf;
@@ -100,16 +102,30 @@ public class MixinBiomeSource {
                     temp += 0.4D;
                 }
 
-                if(x - ((int) temp) <= 0 && temp > 0.8D)
+                if(x - ((int) temp) <= 0 && temp > 0.7D)
                 {
-                    temp -= 0.6D;
+                    temp -= 0.3D;
                 }
 
-                temperatures[q++] = temp;
+                temperatures[q++] = Math.floor(temp * 1000) / 100;
             }
         }
 
         cir.setReturnValue(temperatures);
+        cir.cancel();
+    }
+
+    @Inject(method = "getTemperature", at = @At("HEAD"), cancellable = true)
+    private void injectNewTemperatureMeasure(int x, int z, CallbackInfoReturnable<Double> cir)
+    {
+        this.temperatureNoises = this.temperatureNoise.sample(this.temperatureNoises, x, z, 1, 1, 0.02500000037252903D, 0.02500000037252903D, 0.5D);
+
+        for(int i = 0; i < this.temperatureNoises.length; i++)
+        {
+            this.temperatureNoises[i] = Math.floor(this.temperatureNoises[i] * 1000) / 100;
+        }
+
+        cir.setReturnValue(this.temperatureNoises[0]);
         cir.cancel();
     }
 }
