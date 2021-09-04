@@ -10,7 +10,7 @@ public class InstanceHelper {
      * Return an instance from the class. The class must have constructor Random, int.
      * @param objectClass Class with constructor.
      * @param args Arguments.
-     * @param <T> Class value/
+     * @param <T> Class value.
      * @return New class instance.
      */
     @SneakyThrows
