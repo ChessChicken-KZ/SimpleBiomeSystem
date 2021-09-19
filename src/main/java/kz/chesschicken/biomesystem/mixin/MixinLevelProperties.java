@@ -39,6 +39,11 @@ public class MixinLevelProperties implements ILevelNoise {
             this.noiseEnum = NoiseEnum.INDEPENDENT;
     }
 
+    @Inject(method = "<init>(JLjava/lang/String;)V", at = @At("TAIL"))
+    private void injectGetNoise2(long seed, String name, CallbackInfo ci) {
+        this.noiseEnum = NoiseEnum.INDEPENDENT;
+    }
+
     @Override
     public NoiseEnum getNoiseEnum() {
         return this.noiseEnum;
