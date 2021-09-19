@@ -14,6 +14,7 @@
     "server.MixinMinecraftServer"
   ],
   "client": [
+    "MixinBiomeSourceClient",
     "client.MixinCreateLevel",
     "client.MixinInGame",
     "client.render.MixinGrass",

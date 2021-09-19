@@ -29,8 +29,6 @@ public class MixinBiomeSource {
 
     @Shadow public double[] rainfallNoises;
 
-    @Shadow public double[] detailNoises;
-
     @Inject(method = "<init>(Lnet/minecraft/level/Level;)V", at = @At("TAIL"))
     private void injectReplaceSimplexNoises(Level level, CallbackInfo ci)
     {
@@ -113,20 +111,6 @@ public class MixinBiomeSource {
         }
 
         cir.setReturnValue(temperatures);
-        cir.cancel();
-    }
-
-    @Inject(method = "getTemperature", at = @At("HEAD"), cancellable = true)
-    private void injectNewTemperatureMeasure(int x, int z, CallbackInfoReturnable<Double> cir)
-    {
-        this.temperatureNoises = this.temperatureNoise.sample(this.temperatureNoises, x, z, 1, 1, 0.02500000037252903D, 0.02500000037252903D, 0.5D);
-
-        for(int i = 0; i < this.temperatureNoises.length; i++)
-        {
-            this.temperatureNoises[i] = Math.floor(this.temperatureNoises[i] * 1000) / 100;
-        }
-
-        cir.setReturnValue(this.temperatureNoises[0]);
         cir.cancel();
     }
 }
